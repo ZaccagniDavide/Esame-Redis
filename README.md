@@ -42,3 +42,21 @@
    - Parametri: user1 (string), user2 (string)
    - Output: Restituisce una lista di messaggi.
    - Descrizione: Recupera la cronologia dei messaggi tra due utenti.
+  
+9. Funzione per eliminare un messaggio specifico dalla chat tra due utenti
+   def delete_message(user1, user2, message)
+   - Parametri: user1 (string), user2 (string), message (string)
+   - Output: Restituisce un messaggio di successo o errore.
+   - Descrizione: Elimina un messaggio specifico dalla cronologia chat tra due utenti.
+
+10. Funzione per eliminare l'intera chat tra due utenti
+    def delete_chat(user1, user2)
+    - Parametri: user1 (string), user2 (string)
+    - Output: Restituisce un messaggio di successo.
+    - Descrizione: Elimina l'intera cronologia chat tra due utenti.
+
+11. Funzione per ascoltare le notifiche 
+    def listen_for_notifications(username)
+    - Parametri: username (string)
+    - Output: Nessuno, stampa le notifiche ricevute.
+    - Descrizione: Ascolta le notifiche di nuovi messaggi per un utente specifico e stampa i messaggi ricevuti.
