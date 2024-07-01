@@ -17,3 +17,9 @@ def register(username, password):
     hashed_password = hashlib.sha256(password.encode()).hexdigest()
     r.hset('users', username, hashed_password)
     return 'User registered successfully'
+    
+def login(username, password):
+    stored_password = r.hget('users', username)
+    if stored_password and stored_password == hashlib.sha256(password.encode()).hexdigest():
+        return 'Login successful'
+    return 'Invalid username or password'
