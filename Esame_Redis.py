@@ -23,3 +23,13 @@ def login(username, password):
     if stored_password and stored_password == hashlib.sha256(password.encode()).hexdigest():
         return 'Login successful'
     return 'Invalid username or password'
+
+def add_contact(username, contact):
+    if not r.hexists('users', contact):
+        return 'Contact does not exist'
+    r.sadd(f'contacts:{username}', contact)
+    return 'Contact added successfully'
+
+def set_dnd(username, dnd):
+    r.hset('dnd', username, dnd)
+    return 'DND status updated'
