@@ -70,3 +70,8 @@ def delete_message(user1, user2, message):
         r.lrem(chat_key_2, 1, message)
         return 'Message deleted successfully'
     return 'Message not found'
+    
+def delete_chat(user1, user2):
+    r.delete(f'chat:{user1}:{user2}')
+    r.delete(f'chat:{user2}:{user1}')
+    return 'Chat deleted successfully'
