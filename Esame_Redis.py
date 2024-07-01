@@ -61,3 +61,12 @@ print(add_contact(user1, user2))
 
 print(send_message(user1, user2, 'Ciao, come stai?'))
 print(send_message(user2, user1, 'Tutto bene, grazie!'))
+
+def delete_message(user1, user2, message):
+    chat_key_1 = f'chat:{user1}:{user2}'
+    chat_key_2 = f'chat:{user2}:{user1}'
+    
+    if r.lrem(chat_key_1, 1, message):
+        r.lrem(chat_key_2, 1, message)
+        return 'Message deleted successfully'
+    return 'Message not found'
