@@ -52,3 +52,12 @@ user2 = 'utente2'
 print(f"Chat con {user2}")
 for message in messages:
     print(message)
+
+print(register(user1, 'password123'))
+print(register(user2, 'password456'))
+
+print(login(user1, 'password123'))
+print(add_contact(user1, user2))
+
+print(send_message(user1, user2, 'Ciao, come stai?'))
+print(send_message(user2, user1, 'Tutto bene, grazie!'))
