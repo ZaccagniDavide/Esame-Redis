@@ -33,3 +33,11 @@ def add_contact(username, contact):
 def set_dnd(username, dnd):
     r.hset('dnd', username, dnd)
     return 'DND status updated'
+    
+ def send_message(sender, recipient, message):
+    if r.hget('dnd', recipient) == 'true':
+        return 'Cannot deliver message, user is in DND mode'
+    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    r.rpush(f'chat:{sender}:{recipient}', f'>{message}\t[{timestamp}]')
+    r.rpush(f'chat:{recipient}:{sender}', f'<{message}\t[{timestamp}]')
+    return 'Message sent successfully'
