@@ -1,6 +1,5 @@
 # Esame-Redis
-1. Connessione al database Redis
-   La connessione al database Redis viene effettuata utilizzando redis.StrictRedis. È necessario specificare host, port, db, decode_responses e password.
+1. Connessione al database Redis: la connessione al database Redis viene effettuata utilizzando redis.StrictRedis. È necessario specificare host, port, db, decode_responses e password.
 
 2. Funzione per registrare un nuovo utente
    def register(username, password)
