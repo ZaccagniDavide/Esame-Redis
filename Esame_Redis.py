@@ -34,10 +34,21 @@ def set_dnd(username, dnd):
     r.hset('dnd', username, dnd)
     return 'DND status updated'
     
- def send_message(sender, recipient, message):
+def send_message(sender, recipient, message):
     if r.hget('dnd', recipient) == 'true':
         return 'Cannot deliver message, user is in DND mode'
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     r.rpush(f'chat:{sender}:{recipient}', f'>{message}\t[{timestamp}]')
     r.rpush(f'chat:{recipient}:{sender}', f'<{message}\t[{timestamp}]')
     return 'Message sent successfully'
+     
+#Definizione utenti
+user1 = 'utente1'
+user2 = 'utente2'  
+ def get_messages(user1, user2):
+    return r.lrange(f'chat:{user1}:{user2}', 0, -1)
+    messages = get_messages(user1, user2)
+#Output
+print(f"Chat con {user2}")
+for message in messages:
+    print(message)
